@@ -2,19 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Classes;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class CarouselController extends Controller
+class ClassController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return Response
+     * @return Application|Factory|View
      */
-    public function index()
+    public function index(): View|Factory|Application
     {
-        //
+        $classes = Classes::all();
+        return view('classes.index', ['classes' => $classes]);
     }
 
     /**
