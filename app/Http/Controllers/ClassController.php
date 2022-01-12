@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Classes;
+use App\Models\Chef;
+use App\Models\Course;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -16,18 +17,23 @@ class ClassController extends Controller
      */
     public function index(): View|Factory|Application
     {
-        $classes = Classes::all();
+        $classes = Course::with('events')->get()->sort(function ($item) {
+            foreach ($item->events()->get() as $event) {
+                return $event->starts_at;
+            }
+        });
+
         return view('classes.index', ['classes' => $classes]);
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
+     * @return Application|Factory|View
      */
-    public function create()
+    public function create():  View|Factory|Application
     {
-        //
+        $chefs = Chef::all('id', 'name');
+
+        return view('classes.create', ['chefs' => $chefs]);
     }
 
     /**

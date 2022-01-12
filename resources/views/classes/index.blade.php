@@ -41,15 +41,32 @@
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                     <div class="grid grid-cols-1 md:grid-cols-2">
                         @foreach($classes as $class)
-                            <div class="p-6">
+                            <div class="p-5">
                                 <div class="flex items-center">
-                                    <img src="#" class="d-block w-100"  alt="...">
-                                    <div class="ml-4 text-lg leading-7 font-semibold"><a href="#" class="underline text-gray-900 dark:text-white"></a></div>
+                                    <img src="{{ url('img/Screenshot from 2022-01-11 22-25-08.png') }}" alt="Class Image">
                                 </div>
 
                                 <div class="ml-12">
+                                    <div class="mt-2 dark:text-gray-400 sm:text-left">
+                                        {{ $class->title }}
+                                    </div>
+                                    <div class="mt-2 dark:text-gray-400 sm:text-left">
+                                        <p>Cooking Class</p>
+                                    </div>
+                                    <div class="mt-2 dark:text-gray-400 sm:text-right">
+                                        $ {{ $class->price }}
+                                    </div>
+                                </div>
+                                <div class="ml-12">
                                     <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
                                         {{ $class->chef->name }}
+                                    </div>
+                                    <div class="mt-2 dark:text-gray-400 sm:text-right">
+                                        {{ $class->rating }}
+                                        &#9733;
+                                    </div>
+                                    <div class="mt-2 dark:text-gray-400 sm:text-right">
+                                        {{ $class->number_of_reviews }} reviews
                                     </div>
                                 </div>
                             </div>

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Events extends Model
+class Event extends Model
 {
     use HasFactory;
 
@@ -15,6 +15,6 @@ class Events extends Model
      */
     public function class(): BelongsTo
     {
-        return $this->belongsTo(Classes::class);
+        return $this->belongsTo(Course::class);
     }
 }

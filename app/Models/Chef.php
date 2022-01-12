@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Chefs extends Model
+class Chef extends Model
 {
     use HasFactory;
 
@@ -24,6 +24,6 @@ class Chefs extends Model
      */
     public function classes(): HasMany
     {
-        return $this->hasMany(Classes::class);
+        return $this->hasMany(Course::class);
     }
 }
